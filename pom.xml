@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>                               
+
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>war</packaging>
+
+  <groupId>com.chris.petrolapp</groupId>
+  <artifactId>c3-2017-2018-petrol-backend</artifactId>    <!-- Name of your app engine project -->
+  <version>1.0-SNAPSHOT</version>       <!-- xx.xx.xx -SNAPSHOT means development -->
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+    <maven.compiler.failOnWarning>true</maven.compiler.failOnWarning>
+    <maven.war.filteringDeploymentDescriptors>true</maven.war.filteringDeploymentDescriptors>
+    <appengine-maven.version>1.9.59</appengine-maven.version>
+  </properties>
+
+ 
+  <profiles>  <!-- THINGS ONLY USED WHEN RUN LOCALLY -->
+    <profile>
+      <id>local</id>
+      <dependencies>
+        <dependency>
+          <groupId>com.google.api-client</groupId>
+          <artifactId>google-api-client-appengine</artifactId>
+          <version>1.21.0</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>1.9.59</version>
+    </dependency>
+
+    <dependency>                      
+      <groupId>javax.servlet</groupId>  <!-- Java Servlet API -->
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>           <!-- Provided by the Jetty Servlet engine -->
+    </dependency>
+
+    <dependency>						<!-- A Java serialization/deserialization library to convert Java Objects into JSON and back -->
+      <groupId>com.google.code.gson</groupId>	
+      <artifactId>gson</artifactId>
+      <version>2.8.0</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <!-- Optional - for hot reload of the web application when using an IDE Eclipse / IDEA -->
+    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+    <plugins>
+
+      <plugin>
+        <groupId>com.google.appengine</groupId>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <version>${appengine-maven.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
