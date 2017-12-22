@@ -35,6 +35,7 @@ public class FillUpDao {
     fillUp.setDateTime((long)entity.getProperty(FillUp.DATETIME));
     fillUp.setOdometer(toIntExact((long)entity.getProperty(FillUp.ODOMETER))); //toIntExact new in Java 8: may raise ArithmeticException 
     fillUp.setPrice(toIntExact((long)entity.getProperty(FillUp.PRICE)));
+    fillUp.setVolume(((Double)entity.getProperty(FillUp.VOLUME)).floatValue());
     fillUp.setPartial((boolean)entity.getProperty(FillUp.PARTIAL));
     return fillUp;
   }
